@@ -1,0 +1,16 @@
+[Unit]
+Description=Storj node fetcher loop
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=fetchnodes
+WorkingDirectory=/opt/fetch_nodes
+EnvironmentFile=/opt/fetch_nodes/.env
+ExecStart=/usr/local/bin/fetch_nodes watch --db-path /opt/fetch_nodes/nodes.db
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
