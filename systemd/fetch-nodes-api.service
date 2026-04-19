@@ -1,0 +1,16 @@
+[Unit]
+Description=Storj node API
+After=network-online.target fetch-nodes-watch.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dozor
+WorkingDirectory=/home/dozor/openai/fetch_nodes
+EnvironmentFile=/home/dozor/openai/fetch_nodes/.env
+ExecStart=/usr/local/bin/fetch_nodes serve --db-path /home/dozor/openai/fetch_nodes/nodes.db --listen 127.0.0.1:8080
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
