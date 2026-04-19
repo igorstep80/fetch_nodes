@@ -1,0 +1,16 @@
+[Unit]
+Description=Storj node fetcher loop
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dozor
+WorkingDirectory=/home/dozor/openai/fetch_nodes
+EnvironmentFile=/home/dozor/openai/fetch_nodes/.env
+ExecStart=/usr/local/bin/fetch_nodes watch --db-path /home/dozor/openai/fetch_nodes/nodes.db
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
