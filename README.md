@@ -227,12 +227,12 @@ go run . watch --every 1m
 
 ## systemd
 
-Unit files are included in [systemd](/home/dozor/openai/fetch_nodes/systemd).
+Unit files are included in `systemd/`.
 
 Suggested install flow on Ubuntu:
 
 ```bash
-cd /home/dozor/openai/fetch_nodes
+cd /opt/fetch_nodes
 env GOCACHE=/tmp/fetch_nodes-gocache GOMODCACHE=/tmp/fetch_nodes-gomodcache go build -o fetch_nodes .
 sudo cp fetch_nodes /usr/local/bin/fetch_nodes
 sudo cp systemd/fetch-nodes-watch.service /etc/systemd/system/
@@ -253,7 +253,7 @@ journalctl -u fetch-nodes-api.service -f
 
 ## nginx
 
-A basic reverse proxy config is included in [nginx/fetch-nodes-api.conf](/home/dozor/openai/fetch_nodes/nginx/fetch-nodes-api.conf).
+A basic reverse proxy config is included in `nginx/fetch-nodes-api.conf`.
 
 Install on Ubuntu:
 
